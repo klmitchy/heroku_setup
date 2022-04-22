@@ -9,3 +9,6 @@ app.use(express.static('frontend'));
 app.listen(PORT, () => console.log(`Listening on PORT: 3000`));
 
 
+//what goes here??
+//how do i connect this to my routes? lines 2 and 3
+

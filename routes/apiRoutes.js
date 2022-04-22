@@ -1,12 +1,5 @@
 const express = require('express');
-//const apiRoutes = require('./routes/apiRoutes');
-//const htmlRoutes = require('./routes/htmlRoutes');
 const app = express();
-const PORT = process.env.PORT || 3000;
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('frontend'));
-app.listen(PORT, () => console.log(`Listening on PORT: 3000`));
 
 
 //GET API Request Route
@@ -33,6 +26,13 @@ app.get("/api/notes", (req, res) => {
     })
 });
 
+//const app = require('express')();
+
+// Send back an HTTP response with body 'ok' whenever you
+// receive a GET request, regardless of the URL.
+//app.get('*', function routeHandler(req, res) {
+//  res.send('ok');
+//});
 
 //POST API ROUTE
 /*app.post('/api/reviews', (req, res) => {
@@ -98,3 +98,22 @@ app.post("/api/notes", (req, res) =>{
         res.json(note);
     })
 })
+
+module.exports = app
+
+/*const app = require('express')();
+
+// `:userId` is a route parameter. Express will capture whatever
+// string comes after `/user/` in the URL and store it in
+// `req.params.userId`
+app.get('/user/:userId', (req, res) => {
+  req.params; // { userId: '42' }
+  res.json(req.params);
+});
+
+const server = await app.listen(3000);
+// Demo of making a request to the server
+const axios = require('axios');
+const res = await axios.get('http://localhost:3000/user/42');
+
+res.data; // { userId: '42' }*/
