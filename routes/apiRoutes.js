@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
-const path = require('path');
+const fs = require("fs");
+//const path = require('path');
 
 
 app.get("../api/notes", (req, res) => {
-    readFile("..db/db.json", "utf8")
+    readFile("../db/db.json", "utf8")
     .then(function(data){
         notes = [].concat(json.parse(data))
         res.json(notes);
