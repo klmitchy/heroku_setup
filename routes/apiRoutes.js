@@ -22,14 +22,14 @@ router.post("/notes", (req, res) =>{
     const note = req.body;
     fs.readFile("../db/db.json", "utf8", function(err, data){
     //console.log(data)
-        const notes = [].concat(json.parse(data));
+        const notes = [].concat(JSON.parse(data));
         notes.push(note);
         return notes
-    }).then(function(notes){
-        fs.writeFile("../db/db.json", json.stringify(notes))
+    })
+    fs.writeFile("../db/db.json", JSON.stringify(notes))
         res.json(note);
     })
-})
+
 
 module.exports = router
 
