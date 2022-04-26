@@ -1,22 +1,27 @@
-const express = require('express');
-const app = express();
+const router = require('express').Router();
+//const app = express();
 const fs = require("fs");
 //const path = require('path');
 
 
-app.get("../api/notes", (req, res) => {
-    readFile("../db/db.json", "utf8")
-    .then(function(data){
-        notes = [].concat(json.parse(data))
+router.get("/notes", (req, res) => {
+    fs.readFile("./db/db.json", "utf8", function(err, data){
+        //console.log(data)
+        const notes = [].concat(JSON.parse(data))
         res.json(notes);
     })
+    /*.then(function(data){
+        console.log(data)
+        notes = [].concat(json.parse(data))
+        res.json(notes);
+    })*/
 });
 
 
-app.post("../api/notes", (req, res) =>{
+router.post("/notes", (req, res) =>{
     const note = req.body;
-    readFile("../db/db.json", "utf8")
-    .then(function(data){
+    fs.readFile("../db/db.json", "utf8", function(err, data){
+    //console.log(data)
         const notes = [].concat(json.parse(data));
         notes.push(note);
         return notes
@@ -26,5 +31,5 @@ app.post("../api/notes", (req, res) =>{
     })
 })
 
-module.exports = app
+module.exports = router
 

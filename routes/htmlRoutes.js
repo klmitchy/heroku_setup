@@ -1,18 +1,19 @@
-const express = require('express');
-const app = express();
+//const express = require('express');
+//const app = express();
+const router = require('express').Router();
 const path = require('path');
 
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend/index.html"))
 });
 
-app.get("/notes", (req, res) => {
+router.get("/notes", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend/notes.html"))
 });
 
 //add catch-all star
-app.get("*", (req, res) => {
+router.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend/index.html"))
 });
 
-module.exports = app
+module.exports = router
