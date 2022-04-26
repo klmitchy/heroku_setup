@@ -26,10 +26,11 @@ router.post("/notes", (req, res) =>{
         notes.push(note);
         return notes
     })
-    fs.writeFile("../db/db.json", JSON.stringify(notes))
+    .then(function(notes){
+        fs.writeFile("../db/db.json", JSON.stringify(notes))
         res.json(note);
     })
-
+})
 
 module.exports = router
 
